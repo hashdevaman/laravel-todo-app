@@ -27,17 +27,12 @@ class TodoController extends Controller
         return Redirect::back()->with('success', 'Todo added successfully!');
     }
     public function updateStatus(Request $request){
-        // $validated = $request->validate([
-        //     'status' => 'required'
-        // ]);
 
         $data = $request;
 
-        return $data;
-
         $todo = new Todo;
-        $post->id = $data['id']; //already exists in database.
-        $post->status = $data['status'];
+        $post->id = $data->id;
+        $post->status = $data->status;
         $post->save();
 
         return json_encode(["message" => "Data update successsfully"]);
